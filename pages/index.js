@@ -2,9 +2,9 @@ import Head from 'next/head';
 import { FullPage, Slide } from 'react-full-page';
 import Typed from 'react-typed';
 import Carousel from 'react-material-ui-carousel';
-import { Paper } from '@material-ui/core';
 
 import EmojiObjectsOutlinedIcon from '@material-ui/icons/EmojiObjectsOutlined';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 const pageKey = ['Home', 'Projects', 'Connect'];
 
@@ -12,19 +12,25 @@ const items = [
   {
     name: 'Nautilus',
     description: `Reaching Top 10 on HN and and featured on Google's Kubernetes podcast, Nautilus is a Docker Compose file charting visualizer available for Mac, Windows, and Linux.`,
-    img: '',
+    img: '/nautilus.png',
     url: 'https://nautilusdev.com/',
+  },
+  {
+    name: 'Compost',
+    description: `You've planned plenty of trips using Google docs, went through the process of delegating ownership, etc. Why not generate a quick link to plan your trip and when you're done? Compost it.`,
+    img: '/compost.png',
+    url: 'http://compost-io.herokuapp.com/',
   },
 ];
 
 function Item(props) {
-  console.log(props);
   return (
     <div className="item">
+      <img src={props.item.img} />
       <a href={props.item.url}>
-        <h3>{props.item.name}</h3>
+        <h2>{props.item.name}</h2>
       </a>
-      <p>{props.item.description}</p>
+      <p style={{ height: '30px' }}>{props.item.description}</p>
     </div>
   );
 }
@@ -39,7 +45,6 @@ export default function Home({ setLight, light }) {
           className={`title title-${status}`}
           onClick={() => {
             props.scrollToSlide(i);
-            setSlide(i);
           }}
         >
           {pageKey[i]}
@@ -60,41 +65,41 @@ export default function Home({ setLight, light }) {
           setLight(!light);
         }}
       />
-      <FullPage controls={Controls}>
-        <Slide className="homeSlide">
-          <Typed
-            strings={["Hi, I'm Michael"]}
-            className="intro"
-            typeSpeed={60}
-            showCursor={false}
-          />
-          <h3>
-            A full stack engineer always excited to talk about the latest
-            technologies, music and dad shoes.
-          </h3>
-        </Slide>
-        <Slide className="projectsSlide">
-          <Typed
-            strings={['Projects']}
-            className="projects"
-            typeSpeed={60}
-            showCursor={false}
-          />
-          <Carousel className="carousel">
-            {items.map((item) => (
-              <Item item={item} />
-            ))}
-          </Carousel>
-        </Slide>
-        <Slide className="connectSlide">
-          <Typed
-            strings={["Let's Connect"]}
-            className="intro"
-            typeSpeed={60}
-            showCursor={false}
-          />
-        </Slide>
-      </FullPage>
+      <div className="slides" style={{ width: '80vw' }}>
+        <FullPage controls={Controls}>
+          <Slide className="homeSlide">
+            <div className="introsection">
+              <Typed
+                strings={["Hi, I'm Michael"]}
+                className="intro"
+                typeSpeed={60}
+                showCursor={false}
+              />
+              <h3>
+                A full stack engineer always excited to talk about the latest
+                technologies, music and dad shoes.
+              </h3>
+              <div className="social">
+                <GitHubIcon className="github" />
+              </div>
+            </div>
+            <img src="/me2.jpg" />
+          </Slide>
+          <Slide className="projectsSlide">
+            <Typed
+              strings={['Projects']}
+              className="projects"
+              typeSpeed={60}
+              showCursor={false}
+            />
+            <Carousel className="carousel">
+              {items.map((item) => (
+                <Item item={item} />
+              ))}
+            </Carousel>
+          </Slide>
+        </FullPage>
+      </div>
     </div>
   );
 }

@@ -9,6 +9,9 @@ const MyApp = ({ Component, pageProps }) => {
   const theme = createMuiTheme({
     palette: {
       type: light ? 'light' : 'dark',
+      background: {
+        default: 'light grey',
+      },
     },
   });
   return (
