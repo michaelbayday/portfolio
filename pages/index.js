@@ -17,7 +17,7 @@ const items = [
   },
   {
     name: 'Compost',
-    description: `You've planned plenty of trips using Google docs, went through the process of delegating ownership, etc. Why not generate a quick link to plan your trip and when you're done? Compost it.`,
+    description: `You've planned plenty of trips using Google docs, went through the process of delegating responsibilities for trip supplies, etc. Instead of working out a spreadsheet, plan your trip with Compost. Just generate a quick link to plan your trip and when you're done? Compost it.`,
     img: '/compost.png',
     url: 'http://compost-io.herokuapp.com/',
   },
