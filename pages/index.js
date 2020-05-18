@@ -83,7 +83,7 @@ export default function Home({ setLight, light }) {
                 <GitHubIcon className="github" />
               </div>
             </div>
-            <img src="/me2.jpg" />
+            <img src="/me.jpg" />
           </Slide>
           <Slide className="projectsSlide">
             <Typed
